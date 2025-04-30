@@ -17,9 +17,9 @@ def main(input_dir: Path, output_dir: Path, model_checkpoint: Path):
             img = np.clip(img / np.quantile(img, 0.999), 0, 1)
 
         shape = img.shape
-        pad_z = (0, shape[0] % model.hparams.down_sampling_factor[0])
-        pad_y = (0, shape[1] % model.hparams.down_sampling_factor[1])
-        pad_x = (0, shape[2] % model.hparams.down_sampling_factor[2])
+        pad_z = (0, (shape[0] // model.hparams.down_sampling_factor[0] + 1) * model.hparams.down_sampling_factor[0] - shape[0])
+        pad_y = (0, (shape[1] // model.hparams.down_sampling_factor[1] + 1) * model.hparams.down_sampling_factor[1] - shape[1])
+        pad_x = (0, (shape[2] // model.hparams.down_sampling_factor[2] + 1) * model.hparams.down_sampling_factor[2] - shape[2])
         img = np.pad(img, (pad_z, pad_y, pad_x), mode="reflect")
 
         pred = model.predict_instances(torch.from_numpy(img[np.newaxis, np.newaxis]))[0, 0, :shape[0], :shape[1], :shape[2]]
