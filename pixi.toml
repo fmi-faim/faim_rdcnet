@@ -44,6 +44,7 @@ train_BBBC039 = { cmd = "TASK=TRAIN_BBBC039 pixi run log_commit ; cd $WD ; pytho
 train_MoNuSeg = { cmd = "TASK=TRAIN_MoNuSeg pixi run log_commit ; cd $WD ; python $PIXI_PROJECT_ROOT/source/train_MoNuSeg.py --rdcnet_config rdcnet_config.yaml --trainer_config trainer_config.yaml",  env = { WD = "runs/example"}, depends-on=["cache_status", "source_status"] }
 train_Organoid = { cmd = "TASK=TRAIN_Organoid pixi run log_commit ; cd $WD ; python $PIXI_PROJECT_ROOT/source/train_organoid.py --trainer_config trainer_config.yaml",  env = { WD = "runs/example"}, depends-on=["cache_status", "source_status"] }
 train_Nuclei3D = { cmd = "TASK=TRAIN_Nuclei3D pixi run log_commit ; cd $WD ; python $PIXI_PROJECT_ROOT/source/train_nuclei3d.py --trainer_config trainer_config.yaml",  env = { WD = "runs/example"}, depends-on=["cache_status", "source_status"] }
+predict_Organoid = { cmd = "TASK=PREDICT_Organoid pixi run log_commit ; cd $WD ; python $PIXI_PROJECT_ROOT/source/predict_organoid.py --input_dir $INPUT_DIR --output_dir $OUTPUT_DIR --model_checkpoint $MODEL_CHECKPOINT",  env = { WD = "runs/example", INPUT_DIR="", OUTPUT_DIR="", MODEL_CHECKPOINT="" }, depends-on=["cache_status", "source_status"] }
 
 [feature.docs.dependencies]
 mkdocs = ">=1.6.0,<2"

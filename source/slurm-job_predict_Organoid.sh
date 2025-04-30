@@ -35,7 +35,7 @@ echo "[INFO] [$STARTDATE] [$$] Working directory: $(pwd)"
 
 ### PUT YOUR CODE IN THIS SECTION
 export SBATCH_ACCOUNT="$account"
-WD="$working_dir" pixi run predict_organoid --input_dir "$input_dir" --output_dir "$output_dir" --model_checkpoint "$model_checkpoint"
+WD="$working_dir" pixi run predict_Organoid --input_dir "$input_dir" --output_dir "$output_dir" --model_checkpoint "$model_checkpoint"
 
 ### END OF PUT YOUR CODE IN THIS SECTION
 
