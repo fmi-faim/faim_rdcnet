@@ -15,6 +15,7 @@ build_trainer_config = { cmd = "mkdir -p $WD ; TASK=BUILD_TRAINER_CONFIG pixi ru
 submit_train_MoNuSeg = { cmd = "TASK=SUBMIT_TRAIN_MONUSEG pixi run log_commit ; sbatch --account $ACCOUNT $PIXI_PROJECT_ROOT/source/slurm-job_train_MoNuSeg.sh $ACCOUNT $WD", env = { ACCOUNT = "", WD = "runs/example" }, depends-on=["source_status", "cache_status"]}
 submit_train_Organoid = { cmd = "TASK=SUBMIT_TRAIN_ORGANOID pixi run log_commit ; sbatch --account $ACCOUNT $PIXI_PROJECT_ROOT/source/slurm-job_train_Organoid.sh $ACCOUNT $WD", env = { ACCOUNT = "", WD = "runs/example" }, depends-on=["source_status", "cache_status"]}
 submit_train_Nuclei3D = { cmd = "TASK=SUBMIT_TRAIN_Nuclei3D pixi run log_commit ; sbatch --account $ACCOUNT $PIXI_PROJECT_ROOT/source/slurm-job_train_Nuclei3D.sh $ACCOUNT $WD", env = { ACCOUNT = "", WD = "runs/example" }, depends-on=["source_status", "cache_status"]}
+submit_predict_Organoid = { cmd = "TASK=SUBMIT_PREDICT_ORGANOID pixi run log_commit ; sbatch --account $ACCOUNT $PIXI_PROJECT_ROOT/source/slurm-job_predict_Organoid.sh $ACCOUNT $WD $INPUT_DIR $OUTPUT_DIR $MODEL_CHECKPOINT", env = { ACCOUNT = "", WD = "runs/example", INPUT_DIR="", OUTPUT_DIR="", MODEL_CHECKPOINT="" }, depends-on=["source_status", "cache_status"]}
 
 [dependencies]
 python = "3.11.*"
