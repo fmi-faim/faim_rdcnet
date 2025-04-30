@@ -12,7 +12,7 @@ def main(input_dir: Path, output_dir: Path, model_checkpoint: Path):
 
     input_files = input_dir.glob("*.tif")
     for input_file in input_files:
-        img = imread(input_file).astype(np.float32)
+        img = imread(input_file).astype(np.float32)[:, ::2, ::2]
         if img.max() > 1:
             img = np.clip(img / np.quantile(img, 0.999), 0, 1)
 
