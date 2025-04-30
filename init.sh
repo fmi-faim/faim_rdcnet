@@ -7,7 +7,7 @@ export TMPDIR="$(pwd)/infrastructure/.tmp_$USER"
 mkdir -p "$TMPDIR"
 
 # Ensure that the latest documentation is built.
-pixi run build_docs
+#pixi run build_docs
 
 # Set environment variables for single-threaded execution.
 export OMP_NUM_THREADS=1
