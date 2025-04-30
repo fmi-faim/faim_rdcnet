@@ -39,7 +39,7 @@ def main(
     output_dir = (
         get_git_root()
         / "processed_data"
-        / f"{datetime.datetime.now().isoformat()}_{Path(os.getcwd()).name}"
+        / f"{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}_{Path(os.getcwd()).name}"
     )
     output_dir.mkdir(exist_ok=True, parents=True)
     trainer = pl.Trainer(

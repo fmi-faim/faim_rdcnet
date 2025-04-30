@@ -8,7 +8,7 @@
 #SBATCH --error=slurm_logs/run-%j.err
 #SBATCH --partition=main
 #SBATCH --mem=24GB
-#SBATCH --gres=gpu:a10080g:1
+#SBATCH --gres=gpu:a40:1
 #SBATCH --time=8:00:00
 account="$1"
 working_dir="$2"
